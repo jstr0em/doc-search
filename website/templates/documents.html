@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Documents{% endblock %} {% block content
+%}
+<h1 align="center">Documents</h1>
+
+<ul class="list-group list-group-flush" id="documents">
+  {% for document in user.documents %}
+  <li class="list-group-item">
+    {{ document.name }}
+    <button type="button" class="close" onClick="deleteDocument({{ document.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+
+<form method="post" enctype="multipart/form-data">
+  <label for="document">Select a file:</label>
+  <input type="file" name="document" id="document"><br>
+  <input type="submit" class="btn btn-primary">Upload</button>
+</form>
+{% endblock %}
